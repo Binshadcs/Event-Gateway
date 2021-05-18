@@ -8,3 +8,7 @@ def home(request):
 def login(request):
 
     return render(request, 'log.html')
+
+def register(request):
+
+    return render(request, 'event_reg.html')
