@@ -19,5 +19,7 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^', include('public.urls')),
     url(r'^', include('eventGateway.urls')),
+
 ]

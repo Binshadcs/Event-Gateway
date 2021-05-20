@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import *
 
-def home(request):
+def homead(request):
 
-    return render(request, 'home.html')
+    return render(request, 'adminhome.html')
 
 def login(request):
 
