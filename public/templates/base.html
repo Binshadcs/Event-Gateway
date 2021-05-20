@@ -10,18 +10,18 @@
             {% endblock title%}
         </title>
         <!--CSS and CDNs here-->
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <link rel="stylesheet" href="{% static 'css/stylemenubar.css'%}">
         <!--CSS and CDN close-->
     </head>
-    <body id="body-pd">
-
-
-      <div class="">
+    <body>
+   {%include 'indexmenubar.html' %}
+    <div class="">
          {% block head %}
 
          {% endblock head %}
       </div>
-      <div class="">
+      <div class="main">
             {% block main %}
 
             {% endblock main %}
