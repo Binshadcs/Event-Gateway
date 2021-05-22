@@ -10,26 +10,33 @@
             {% endblock title%}
         </title>
         <!--CSS and CDNs here-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-        <link rel="stylesheet" href="{% static 'css/stylemenubar.css'%}">
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+        <!-- Latest compiled and
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        minified CSS -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <!--CSS and CDN close-->
     </head>
-    <body>
-   {%include 'indexmenubar.html' %}
-    <div class="">
+    <body id="body-pd">
+
+    {% include 'indexmenubar.html'%}
+      <div class="main-top">
          {% block head %}
 
          {% endblock head %}
       </div>
-      <div class="main">
+      <div class="main-contend">
             {% block main %}
 
             {% endblock main %}
       </div>
 
         <!--JS here-->
-        <script src=""></script>
-
+        <script src="{% static 'js/main.js' %}"></script>
+        <!-- Latest compiled and minified
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        JavaScript -->
         <!--JS close-->
     </body>
+</html>
 </html>

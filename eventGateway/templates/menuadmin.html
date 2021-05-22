@@ -6,7 +6,7 @@
                 <div class="user-wrapper">
                     <img src="{% static 'image/me.png' %}" width="40px" height="40px" alt="">
                     <div>
-                        <h4>John Doe</h4>
+                        <h4>John</h4>
                     </div>
                 </div>
 
@@ -48,7 +48,7 @@
                     </div>
                 </div>
 
-                <a href="#" class="nav__link">
+                <a href="{% url 'logout' %}" class="nav__link">
                     <i class='bx bx-log-out nav__icon' ></i>
                     <span class="nav__name">Log Out</span>
                 </a>

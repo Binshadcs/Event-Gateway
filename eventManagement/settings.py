@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'eventGateway',
-    'public',
+    'eventGateway.apps.EventgatewayConfig',
+    'public.apps.PublicConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +125,9 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR, 'eventGateway/static'),
     os.path.join(BASE_DIR, 'public/static'),
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'home'
+
+LOGIN_URL ='login'

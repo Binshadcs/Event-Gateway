@@ -4,8 +4,17 @@
 
 {% endblock title%}
 {% block head %}
-this is admin home page and changed
+
+{% if messages %}
+{% for message in messages %}
+  <div class="alert alert-{{ message.tags }}">
+       {{ message }}
+  </div>
+
+{% endfor %}
+{% endif %}
+
 {% endblock head %}
 {% block main %}
-aws
+
 {% endblock main %}
