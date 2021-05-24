@@ -34,11 +34,3 @@ class Events(models.Model):
     def get_absolute_url(self):
         return reverse('event_detiled_view', kwargs={'pk' : self.pk})
 
-
-class EventRegisteration(models.Model):
-    event = models.ForeignKey(Events, on_delete=models.DO_NOTHING)
-    name = models.CharField(max_length=50)
-    email = models.EmailField()
-    phone_number = models.IntegerField()
-    open = models.BooleanField(default=True)
-    participants = models.AutoField(primary_key=True)

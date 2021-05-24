@@ -7,6 +7,8 @@ from eventGateway import views as user_views
 urlpatterns = [
     path('', EventsListview.as_view(), name='home'),
     path('event/<int:pk>/', EventsDetileview.as_view(), name='event_detiled_view'),
+    path('event/<int:pk>/update/', EventsUpdateview.as_view(), name='event_update'),
+    path('event/<int:pk>/delete/', EventsDeleteview.as_view(), name='event_delete'),
     path('event/new/', EventsCreateview.as_view(), name='event_create'),
     path('events/', views.Events, name='events'),
     path('about_us/', views.AboutUs, name='aboutUs'),

@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     ListView,
     DetailView,
-    CreateView
+    CreateView,
+    UpdateView,
+    DeleteView
 )
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
@@ -30,7 +33,7 @@ class EventsDetileview(DetailView):
     template_name = 'events_detail.html'
 
 
-class EventsCreateview(CreateView):
+class EventsCreateview(LoginRequiredMixin, CreateView):
     model = Events
     template_name = 'event_form.html'
     fields = [
@@ -46,7 +49,39 @@ class EventsCreateview(CreateView):
         form.instance.creator = self.request.user
         return super().form_valid(form)
 
+class EventsUpdateview(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Events
+    template_name = 'event_form.html'
+    fields = [
+        'title',
+        'description',
+        'date',
+        'time',
+        'venue',
+        'max_participants',
+        'banner'
+    ]
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        return super().form_valid(form)
 
+    def test_func(self):
+        event = self.get_object()
+        if self.request.user == event.creator:
+            return True
+        return False
+
+
+class EventsDeleteview(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Events
+    success_url = '/'
+    template_name = 'event_delete.html'
+
+    def test_func(self):
+        event = self.get_object()
+        if self.request.user == event.creator:
+            return True
+        return False
 
 
 
@@ -78,7 +113,6 @@ def user_register(request):
 @login_required
 def profile(request):
     return render(request, 'profile.html')
-
 
 
 def Students(request):
