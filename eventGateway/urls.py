@@ -1,10 +1,13 @@
 from django.urls import path
+from .views import *
 from django.contrib.auth import views as auth_view
 from . import views
 from eventGateway import views as user_views
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', EventsListview.as_view(), name='home'),
+    path('event/<int:pk>/', EventsDetileview.as_view(), name='event_detiled_view'),
+    path('event/new/', EventsCreateview.as_view(), name='event_create'),
     path('events/', views.Events, name='events'),
     path('about_us/', views.AboutUs, name='aboutUs'),
     # Login and Logout
@@ -17,3 +20,4 @@ urlpatterns = [
     path('students/', views.Students, name='students'),
 
 ]
+

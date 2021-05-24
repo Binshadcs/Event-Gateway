@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% load static %}
 {% block title %}
 
@@ -10,11 +11,35 @@
   <div class="alert alert-{{ message.tags }}">
        {{ message }}
   </div>
-
 {% endfor %}
 {% endif %}
-
 {% endblock head %}
 {% block main %}
+{% for event in events %}
 
+    <div class="event">
+        <div class="title"><h2><a href="{% url 'event_detiled_view' event.id %}">
+            {{ event.title }}</a></h2>
+        </div>
+        <div class="banner">
+         <img src="{{ event.banner.url }}">
+        </div>
+        <div class="description"><p>
+           {{ event.description }}</p>
+        </div>
+        <div class="max-participants">
+            {{ event.max_participants }}
+        </div>
+        <div class="max-date">
+            {{ event.date }}
+        </div>
+        <div class="max-time">
+            {{ event.time }}
+        </div>
+        <div class="max-venue">
+            {{ event.venue }}
+        </div>
+    </div>
+
+{% endfor %}
 {% endblock main %}

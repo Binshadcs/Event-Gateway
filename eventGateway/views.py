@@ -1,4 +1,9 @@
 from django.shortcuts import render, redirect
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView
+)
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -6,8 +11,43 @@ from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
 
 def home(request):
+    context = {
+        'events': Events.object.all()
+    }
+    return render(request, 'home.html', context)
 
-    return render(request, 'home.html')
+class EventsListview(ListView):
+    model = Events
+    template_name = 'home.html'
+    # <app>/<model>_<viewtype>.html
+
+    context_object_name = 'events'
+    ordering = ['date']
+
+
+class EventsDetileview(DetailView):
+    model = Events
+    template_name = 'events_detail.html'
+
+
+class EventsCreateview(CreateView):
+    model = Events
+    template_name = 'event_form.html'
+    fields = [
+        'title',
+        'description',
+        'date',
+        'time',
+        'venue',
+        'max_participants',
+        'banner'
+    ]
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        return super().form_valid(form)
+
+
+
 
 
 def AboutUs(request):
@@ -44,6 +84,9 @@ def profile(request):
 def Students(request):
 
     return render(request, 'students.html')
+
+
+
 
 
 

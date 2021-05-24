@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+
+{% endblock title%}
+{% block head %}
+
+{% endblock head %}
+{% block main %}
+
+ <div class="event">
+        <div class="title"><h2>
+            {{ object.title }}</h2>
+        </div>
+        <div class="banner">
+         <img src="{{ event.banner.url }}">
+        </div>
+        <div class="description">
+           {{ object.description }}
+        </div>
+        <div class="max-participants">
+            {{ object.max_participants }}
+        </div>
+        <div class="max-date">
+            {{ object.date }}
+        </div>
+        <div class="max-time">
+            {{ object.time }}
+        </div>
+        <div class="max-venue">
+            {{ object.venue }}
+        </div>
+    </div>
+
+
+{% endblock main %}
