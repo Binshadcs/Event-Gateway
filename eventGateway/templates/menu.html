@@ -3,15 +3,27 @@
             <div class="header__toggle">
                 <i class='bx bx-menu' id="header-toggle"></i>
             </div>
-                <div class="user-wrapper">
-                    <img src="{% static 'image/me.png' %}" width="40px" height="40px" alt="">
-                    <div>
-                        <h4>John</h4>
-                    </div>
-                </div>
+               {% if user.is_authenticated %}
+                        <div class="user-wrapper">
 
+                                <img src="{{ user.students.image.url }}" width="40px" height="40px" alt="">
+                                <div>
+                                    <h4>{{ user.username }}</h4>
+                                </div>
+
+                        </div>
+              {% else %}
+                        <div class="user-wrapper">
+
+                            <button>
+                                <a class="btn btn-info" href="{% url 'login' %}">Login</a>
+                            </button>
+                            <div>
+
+                            </div>
+                        </div>
+              {% endif %}
         </header>
-
         <div class="l-navbar" id="nav-bar">
             <nav class="nav">
                 <div>
@@ -30,7 +42,7 @@
                             <i class='bx bx-calendar-event nav__icon' ></i>
                             <span class="nav__name">Events</span>
                         </a>
-
+                        {% if user.is_authenticated %}
                         <a href="#" class="nav__link">
                             <i class='bx bx-user nav__icon' ></i>
                             <span class="nav__name">Application</span>
@@ -44,13 +56,25 @@
                             <i class='bx bxs-contact nav__icon' ></i>
                             <span class="nav__name">User</span>
                         </a>
+                        <a href="#" class="nav__link">
+                            <i class='bx bxs-contact nav__icon' ></i>
+                            <span class="nav__name">About</span>
+                        </a>
+                        {% else %}
+                        <a href="#" class="nav__link">
+                            <i class='bx bxs-contact nav__icon' ></i>
+                            <span class="nav__name">About</span>
+                        </a>
+                        {% endif %}
 
                     </div>
                 </div>
+                 {% if user.is_authenticated %}
+                        <a href="{% url 'logout' %}" class="nav__link">
+                            <i class='bx bx-log-out nav__icon' ></i>
+                            <span class="nav__name">Log Out</span>
 
-                <a href="{% url 'logout' %}" class="nav__link">
-                    <i class='bx bx-log-out nav__icon' ></i>
-                    <span class="nav__name">Log Out</span>
-                </a>
+                        </a>
+                {% endif %}
             </nav>
-        </div>
+          </div>

@@ -1,24 +1,32 @@
-{% extends 'baseadmin.html' %}
-{% load crispy_forms_tags %}
 {% load static %}
-{% block title %}
+<!DOCTYPE html>
+<html lang="en" dir="1tr">
+    <head>
+        <meta charset="utf-8">
+        <title>Animated Login Form</title>
+        <link rel="stylesheet" href="log.css">
+    </head>
+    <body>
+        <div class="center">
+            <h1>Login</h1>
+            <form method="post">
+                {% csrf_token %}
+                <div class="txt_field">
+                    {{ form.username }}
+                    <label>Username</label>
+                </div>
+                <div class="txt_field">
+                    {{ form.password }}
+                    <label>password</label>
+                </div>
+                <div class="pass">Forgot password?</div>
+                <input type="submit" value="Login">
+                <div class="signup_link">
+                    Not a member? <a href="{% url 'user_register' %}">Signup</a>
+                </div>
+            </form>
+        </div>
+    <link rel="stylesheet" href="{% static 'css/log.css' %}">
+    </body>
+</html>
 
-{% endblock title%}
-{% block head %}
-<h2>User Registeration</h2>
-{% endblock head %}
-{% block main %}
-
-  <div class="content-section">
-      <form method="POST">
-          {% csrf_token %}
-          <fieldset class="form-group">
-            {{ form|crispy }}
-          </fieldset>
-          <div class="form-group">
-              <button class="btn btn-outline-info" type="submit">Sign Up</button>
-          </div>
-      </form>
-  </div>
-
-{% endblock main %}
