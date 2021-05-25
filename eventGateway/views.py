@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.models import User
 from django.views.generic import (
     ListView,
     DetailView,
@@ -19,6 +20,20 @@ def home(request):
     }
     return render(request, 'home.html', context)
 
+class Students(ListView):
+    model = User
+    template_name = 'students.html'
+    context_object_name = 'students'
+
+
+
+class EventsListviewevent(ListView):
+    model = Events
+    template_name = 'events.html'
+    context_object_name = 'events'
+    # <app>/<model>_<viewtype>.html
+
+    context_object_name = 'events'
 class EventsListview(ListView):
     model = Events
     template_name = 'home.html'
@@ -83,14 +98,22 @@ class EventsDeleteview(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
+class RegisterEvent(LoginRequiredMixin, CreateView):
+    model = eventRegisteration
+    template_name = 'event_register_form.html'
+    fields = [
+        'event',
+        'name',
+        'email',
+        'phone_number'
+    ]
+
 
 
 def AboutUs(request):
     return render(request, 'aboutUs.html')
 
 
-def Events(request):
-    return render(request, 'events.html')
 
 
 @login_required
@@ -115,9 +138,13 @@ def profile(request):
     return render(request, 'profile.html')
 
 
-def Students(request):
+def RegisteredEvents(request):
+    contex = {
+        'events' : eventRegisteration.objects.all()
+    }
+    return render(request, 'Registered_events.html', contex)
 
-    return render(request, 'students.html')
+
 
 
 

@@ -8,29 +8,36 @@
 {% endblock head %}
 {% block main %}
 
- <div class="event">
+ <div class="card">
+      <div class="card-body">
         <div class="title"><h2>
             {{ object.title }}</h2>
         </div>
-        <div class="banner">
-         <img src="{{ event.banner.url }}">
-        </div>
-        <div class="description">
+        <div class="description"><label><h5>Description</h5></label><br>
            {{ object.description }}
         </div>
-        <div class="max-participants">
+        <div class="max-participants"><label><h5>Max Participants</h5></label><br>
             {{ object.max_participants }}
         </div>
-        <div class="max-date">
+        <div class="max-date"><label><h5>Date</h5></label><br>
             {{ object.date }}
         </div>
-        <div class="max-time">
+        <div class="max-time"><label><h5>Time</h5></label><br>
             {{ object.time }}
         </div>
-        <div class="max-venue">
+        <div class="max-venue"><label><h5>Venue</h5></label><br>
             {{ object.venue }}
         </div>
-    </div>
+        {% if object.creator == user %}
+
+          <div>
+              <a href="{% url 'event_delete' object.id %}" class="btn btn-info">Delete </a>
+              <a href="{% url 'event_update' object.id %}" class="btn btn-danger">Update</a>
+          </div>
+          {% endif %}
+      </div>
+ </div>
+
 
 
 {% endblock main %}

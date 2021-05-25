@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+
+{% endblock title%}
+{% block head %}
+
+{% endblock head %}
+{% block main %}
+<div class="card">
+    <div class="card-body">
+        <h3>Students</h3>
+        <table class="table table-hover">
+        <thead>
+          <tr>
+
+            <th scope="col">Name</th>
+              <th></th>
+            <th scope="col">email</th>
+
+          </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+          <tr>
+
+
+            <td>  {{ student.username }}</td>
+               <td></td>
+            <td>{{ student.email }}</td>
+
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</div>
+{% endblock main %}

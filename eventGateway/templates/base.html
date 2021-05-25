@@ -29,7 +29,12 @@
 <div class="page-content p-5" id="content">
   <!-- Toggle button -->
   <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Toggle</small></button>
-  <a href="{% url 'login' %}" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><small class="text-uppercase font-weight-bold">Login</small></a>
+  {% if user.is_authenticated %}
+
+    {% else %}
+    <a href="{% url 'login' %}" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><small class="text-uppercase font-weight-bold">Login</small></a>
+   {% endif %}
+
     {% block head %}
 
          {% endblock head %}

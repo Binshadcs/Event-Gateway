@@ -4,10 +4,10 @@
 <div class="vertical-nav bg-white" id="sidebar">
   <div class="py-4 px-3 mb-4 bg-light">
     <div class="media d-flex align-items-center">
-        <img loading="lazy" src="imagesp-1.png" alt="..." width="80" height="80" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+        <img loading="lazy" width="80" height="80" class="mr-3 rounded-circle img-thumbnail shadow-sm">
       <div class="media-body">
-        <h4 class="m-0">IET</h4>
-        <p class="font-weight-normal text-muted mb-0">University of Calicut</p>
+        <h4 class="m-0">Event Gateway</h4>
+        <p class="font-weight-normal text-muted mb-0">{{ user.username }}</p>
       </div>
     </div>
   </div>
@@ -21,31 +21,62 @@
                 Home
             </a>
     </li>
+       {% if user.is_authenticated %}
        <li class="nav-item">
       <a href="{% url 'events' %}" class="nav-link text-dark">
                 <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
                 Events
             </a>
     </li>
-    <li class="nav-item">
+
+
+      <li class="nav-item">
+      <a href="{% url 'registered' %}" class="nav-link text-dark">
+                <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
+                Registered
+            </a>
+    </li>
+      <li class="nav-item">
+      <a href="{% url 'profile' %}" class="nav-link text-dark">
+                <i class="fa far fa-user mr-3 text-primary fa-fw"></i>
+                Profile
+            </a>
+    </li>
+      <li class="nav-item">
+      <a href="{% url 'students' %}" class="nav-link text-dark">
+          <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
+
+                Students
+            </a>
+    </li>
+      <li class="nav-item">
+      <a href="{% url 'aboutUs' %}" class="nav-link text-dark">
+                <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
+                About Us
+            </a>
+    </li>
+      <li class="nav-item">
+      <a href="{% url 'logout' %}" class="nav-link text-dark">
+                <i class="fa fa-font-awesome mr-3 text-primary fa-fw"></i>
+                Logout
+            </a>
+    </li>
+      {% else %}
+      <li class="nav-item">
+      <a href="{% url 'events' %}" class="nav-link text-dark">
+                <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
+                Events
+            </a>
+    </li>
+      <li class="nav-item">
       <a href="{% url 'aboutUs' %}" class="nav-link text-dark">
                 <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
                 About Us
             </a>
     </li>
 
-    <li class="nav-item">
-      <a href="{% url 'events' %}" class="nav-link text-dark">
-                <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
-                Events
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark">
-                <i class="fa fa-edit mr-3 text-primary fa-fw"></i>
-                Create Login Page
-            </a>
-    </li>
+  {% endif %}
+
   </ul>
 </div>
 <!-- End vertical navbar -->

@@ -9,15 +9,13 @@
 {% endblock head %}
 {% block main %}
 
-<div class="card">
-    <div class="card-body">
+<div class="">
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <h3>Application For a event </h3>
+        <h3>Register for the event </h3>
          {{ form|crispy }}
-        <button class="btn btn-outline-info" type="submit">Apply</button>
+        <button class="btn btn-outline-info" type="submit">Register</button>
     </form>
-        </div>
 </div>
 
 {% endblock main %}
