@@ -8,7 +8,7 @@ Event gateway is the web applicaion for event management
 ## Team Id
 BFH/recKqryXzDDHAaeb5/2021
 ## Link to product walkthrough
-[link to video]
+[https://www.loom.com/share/2e56ef061d2247ab9fa2a76034e69422]
 
 ## Libraries used
 Django==3.1.2
